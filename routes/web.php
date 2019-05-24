@@ -54,3 +54,5 @@ Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 Route::get('redis', 'RedisController@redis')->name('redis');
 
 Route::resource('replies', 'RepliesController', ['only' => ['store',  'destroy']]);
+
+Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);

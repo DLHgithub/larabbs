@@ -9,8 +9,8 @@ class RedisController extends Controller
 {
     public function redis()
     {
-        Redis::set('name', 'guwenjie');
-        $values = Redis::get('name');
+        Redis::set('key', 'redis is load success');
+        $values = Redis::get('key');
         dd($values);
         //输出："guwenjie"
         //加一个小例子比如网站首页某个人员或者某条新闻日访问量特别高，可以存储进redis，减轻内存压力

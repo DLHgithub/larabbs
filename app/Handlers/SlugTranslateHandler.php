@@ -9,6 +9,9 @@ class SlugTranslateHandler
 {
     public function translate($text)
     {
+        // 此处还需要增加外部翻译API
+
+        //若没有API,则默认调用拼音翻译
         return $this->pinyin($text);
     }
 
