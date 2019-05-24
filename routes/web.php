@@ -51,6 +51,6 @@ Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
 
 //redis测试
-Route::get('redis', 'RedisController@redis')->name( 'redis');
+Route::get('redis', 'RedisController@redis')->name('redis');
 
-Route::resource('replies', 'RepliesController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::resource('replies', 'RepliesController', ['only' => ['store',  'destroy']]);
