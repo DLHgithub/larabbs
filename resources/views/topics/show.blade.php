@@ -68,8 +68,8 @@
       <div class="card-body">
         {{-- 用户登录后才显示话题回复输入框 --}}
         @includeWhen(Auth::check(), 'topics._reply_box', ['topic' => $topic])
-        
-        @include('topics._reply_list', ['replies' => $topic->replies()->with('user')->get()])
+
+        @include('topics._reply_list', ['replies' => $topic->replies()->recent()->with('user')->get()])
       </div>
     </div>
 

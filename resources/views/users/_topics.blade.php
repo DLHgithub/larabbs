@@ -16,7 +16,8 @@
 </ul>
 
 @else
-<div class="empty-block">暂无数据 ~_~ </div>
+{{-- <div class="empty-block">暂无数据 ~_~ </div> --}}
+@include('shared._data_empty',['msg'=>'这个人很懒，还没有发布话题....'])
 @endif
 
 {{-- 分页 --}}

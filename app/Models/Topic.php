@@ -50,10 +50,10 @@ class Topic extends Model
         return $query->orderBy('updated_at', 'desc');
     }
 
-    public function scopeRecent($query)
+    public function scopeRecent($query, $order = 'desc')
     {
         // 按照创建时间排序
-        return $query->orderBy('created_at', 'desc');
+        return $query->orderBy('created_at', $order);
     }
 
     public function link($params = [])
