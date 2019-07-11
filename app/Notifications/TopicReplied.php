@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Models\Reply;
 
-class TopicReplied extends Notification implements ShouldQueue
+class TopicReplied extends Notification
 {
     use Queueable;
 
@@ -32,7 +32,10 @@ class TopicReplied extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['database', 'mail'];
+        return [
+            'database',
+            // 'mail'
+        ];
     }
 
     public function toDatabase($notifiable)

@@ -32,6 +32,10 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
+//修改密码
+Route::get('/users/{user}/password', 'UsersController@editPassword')->name('users.password');
+Route::patch('/users/{user}/password', 'UsersController@updatePassword')->name('users.password');
+
 // Email 认证相关路由
 Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');

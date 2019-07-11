@@ -7,6 +7,7 @@ use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail as MustVerifyEmailContract;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmailContract
@@ -72,6 +73,23 @@ class User extends Authenticatable implements MustVerifyEmailContract
         return $this->hasMany(Reply::class);
     }
 
+    public function checkPassword($password)
+    {
+        return Hash::check($password, $this->password);
+    }
+
+    public function isAuthorOf($model)
+    {
+        return $this->id == $model->user_id;
+    }
+
+    public function markAsRead()
+    {
+        $this->notification_count = 0;
+        $this->save();
+        $this->unreadNotifications->markAsRead();
+    }
+
     public function setPasswordAttribute($value)
     {
         // 如果值的长度等于 60，即认为是已经做过加密的情况
@@ -83,16 +101,4 @@ class User extends Authenticatable implements MustVerifyEmailContract
 
         $this->attributes['password'] = $value;
     }
-
-    // public function setAvatarAttribute($path)
-    // {
-    //     // 如果不是 `http` 子串开头，那就是从后台上传的，需要补全 URL
-    //     if (!starts_with($path, 'http')) {
-
-    //         // 拼接完整的 URL
-    //         $path = config('app.url') . "/uploads/images/avatars/$path";
-    //     }
-
-    //     $this->attributes['avatar'] = $path;
-    // }
 }

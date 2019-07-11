@@ -9,10 +9,10 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title', 'DLH博客园') - 《DLH博客园》</title>
+  <title>@yield('title', '论坛家园') - 《DLH论坛家园》</title>
 
-  <meta name="description" content="@yield('description', setting('seo_description', 'DLH博客园爱好者社区。'))" />
-  <meta name="keyword" content="@yield('keyword', setting('seo_keyword', 'DLH博客园,社区,论坛,开发者论坛'))" />
+  <meta name="description" content="@yield('description', setting('seo_description', 'DLH论坛家园爱好者社区'))" />
+  <meta name="keyword" content="@yield('keyword', setting('seo_keyword', 'DLH论坛家园,社区,论坛,开发者论坛'))" />
 
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
